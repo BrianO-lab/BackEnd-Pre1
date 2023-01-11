@@ -57,7 +57,6 @@ class ProductManager {
   async deleteProduct(pid) {
     const products = await this.getItems();
     const foundProduct = await this.getItemById(pid);
-    // validacion de que si no existe el prod con ese id devuelva error
     if (foundProduct) {
       const filteredProducts = products.filter((product) => product.id !== pid);
       await this.writeFile(filteredProducts);
