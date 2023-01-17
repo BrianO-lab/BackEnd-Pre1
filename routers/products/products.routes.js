@@ -8,20 +8,16 @@ router.get("/", async (req, res) => {
   const limit = Number(req.query.limit);
 
   if (isNaN(limit)) {
-    res.status(400).send("el parametro debe ser un numero");
-  } else {
-    if (limit) {
-      const limitProducts = products.slice(0, limit);
-      res.json({
-        status: "success",
-        data: limitProducts,
-      });
-    } else {
-      res.json({
-        status: "success",
-        data: products,
-      });
-    }
+    res.json({
+      status: "success",
+      data: products,
+    });
+  } else if (limit) {
+    const limitProducts = products.slice(0, limit);
+    res.json({
+      status: "success",
+      data: limitProducts,
+    });
   }
 });
 
