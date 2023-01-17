@@ -48,6 +48,7 @@ router.post("/", async (req, res) => {
     !product.code ||
     !product.status ||
     !product.category ||
+    !product.stock ||
     !product.thumbnails
   ) {
     res.status(400).send("todos los campos deben ser obligatorios");
