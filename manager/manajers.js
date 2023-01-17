@@ -80,7 +80,7 @@ class ProductManager {
     const order = cart.find((c) => c.orderId === cid);
 
     if (order) {
-      const productExist = order.products.find((prod) => prod.id === pid);
+      const productExist = order.products.find((prod) => prod.prodId === pid);
 
       if (productExist) {
         const orderPosition = cart.findIndex((order) => order.orderId === cid);

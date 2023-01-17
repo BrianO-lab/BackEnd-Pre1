@@ -1,6 +1,19 @@
 [
-  {
-    "orderId": 1,
-    "products": []
-  }
+	{
+		"orderId": 1,
+		"products": [
+			{
+				"prodId": 1,
+				"quantity": 1
+			},
+			{
+				"prodId": 1,
+				"quantity": 1
+			}
+		]
+	},
+	{
+		"orderId": 2,
+		"products": []
+	}
 ]
