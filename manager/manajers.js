@@ -68,7 +68,7 @@ class ProductManager {
 
   async createCart() {
     let cart = await this.getItems();
-    const newCart = { orderId: cart.length + 1, products: [] };
+    const newCart = { id: cart.length + 1, products: [] };
     cart.push(newCart);
     await this.writeFile(cart);
     return cart;
@@ -77,13 +77,13 @@ class ProductManager {
   async addToCart(cid, pid) {
     let cart = await this.getItems();
 
-    const order = cart.find((c) => c.orderId === cid);
+    const order = cart.find((c) => c.id === cid);
 
     if (order) {
       const productExist = order.products.find((prod) => prod.prodId === pid);
 
       if (productExist) {
-        const orderPosition = cart.findIndex((order) => order.orderId === cid);
+        const orderPosition = cart.findIndex((order) => order.id === cid);
         const updateProduct = cart[orderPosition].products.find(
           (prod) => prod.prodId === pid
         );
@@ -97,7 +97,7 @@ class ProductManager {
         return cart;
       } else {
         const newProduct = { prodId: pid, quantity: 1 };
-        const orderPosition = cart.findIndex((order) => order.orderId === cid);
+        const orderPosition = cart.findIndex((order) => order.id === cid);
         if (orderPosition >= 0) {
           cart[orderPosition].products.push(newProduct);
           await this.writeFile(cart);
@@ -106,7 +106,7 @@ class ProductManager {
       }
     } else {
       const newOrder = {
-        orderId: cart.length + 1,
+        id: cart.length + 1,
         products: [{ prodId: pid, quantity: 1 }],
       };
       cart.push(newOrder);
