@@ -85,10 +85,10 @@ class ProductManager {
       if (productExist) {
         const orderPosition = cart.findIndex((order) => order.orderId === cid);
         const updateProduct = cart[orderPosition].products.find(
-          (prod) => prod.id === pid
+          (prod) => prod.prodId === pid
         );
         const productPosition = cart[orderPosition].products.findIndex(
-          (prod) => prod.id === pid
+          (prod) => prod.prodId === pid
         );
 
         cart[orderPosition].products[productPosition].quantity =
